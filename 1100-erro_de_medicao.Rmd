@@ -1,1 +1,5 @@
 # Erros de Mensuração
+
+4.  **Erro de medição:** Falha em captar o valor verdadeiro da medida.
+
+**Ação de Gestão:** O coletor de dados (entrevistador) é uma das fontes primárias do erro de medição, reforçando que o **treinamento adequado** é fundamental para a redução desse erro.

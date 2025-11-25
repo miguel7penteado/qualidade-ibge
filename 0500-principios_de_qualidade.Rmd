@@ -1,1 +1,22 @@
 # Princípios de Qualidade
+
+## Pilares e Princípios de Qualidade
+A qualidade desempenha um papel fundamental na seleção de produtos e serviços que competem entre si.
+
+### Definição de Qualidade (ABNT)
+*   Grau no qual um conjunto de características inerentes satisfaz a requisitos (ABNT NBR ISO 9000:2015).
+
+### Princípio do IBGE: Precisão e Acurácia
+O IBGE baseia a credibilidade de suas estatísticas em princípios, destacando o Princípio 14 (Precisão e Acurácia):
+*   As estatísticas oficiais produzidas pelo IBGE devem **refletir a realidade de forma precisa e confiável**.
+*   É essencial **analisar e documentar os erros amostrais e não-amostrais** das estatísticas oficiais.
+
+### Dimensões da Qualidade (Política de Qualidade do IBGE, 2018)
+| Dimensão | Definição |
+| :--- | :--- |
+| **Relevância** | Atendimento às necessidades prioritárias da sociedade. |
+| **Precisão e acurácia** | Refletir a realidade de forma confiável, aproximando-se dos valores verdadeiros. |
+| **Oportunidade** | Rapidez na liberação dos dados, garantindo sua utilidade. |
+| **Coerência** | Estatísticas consistentes internamente e produzidas segundo padrões comuns. |
+| **Acessibilidade e transparência** | Dados apresentados de forma clara e compreensível a todos os usuários. |
+

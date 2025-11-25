@@ -1,1 +1,10 @@
 # Fontes de erros Não-Amostrais
+
+### Fontes do Erro Não-Amostral (Biemer & Lyberg, 2003)
+1.  **Erro de especificação:** Conceito implícito na pergunta diferente do que deveria ser medido.
+2.  **Erro de cobertura:** Falha em cobrir a população-alvo.
+3.  **Erro de não-resposta:** Falha em obter a resposta para um ou mais quesitos.
+4.  **Erro de medição:** Falha em captar o valor verdadeiro da medida.
+5.  **Erro de processamento:** Erro na etapa final da coleta (classificação, codificação, crítica e imputação).
+6.  **Erro de estimação:** Falha na aplicação de métodos estatísticos de estimação.
+

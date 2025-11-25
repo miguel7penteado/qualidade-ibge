@@ -1,1 +1,51 @@
 ## Exercícios - Erro Não-Amostral
+
+## Exercício 2 – Introduzindo um erro de medição
+
+Agora vamos introduzir um **erro de medição** simples: suponha que, em
+média, o entrevistador subestime em 10% o rendimento dos entrevistados
+com renda acima de R\$ 3.000.
+
+1.  A partir da mesma população fictícia, crie uma variável
+    `renda_observada` com a seguinte regra:
+
+    -   se `renda_pop > 3000`, então
+        `renda_observada = 0.9 * renda_pop`;
+    -   caso contrário, `renda_observada = renda_pop`.
+
+2.  Repita o mesmo processo de amostragem do Exercício 1, mas agora
+    calcule as médias usando `renda_observada`.
+
+3.  Compare o novo viés com o viés do Exercício 1.
+
+```{r exercicio2-erro-medicao, message=FALSE, warning=FALSE}
+# 1. Criar renda observada com erro de medição
+renda_obs <- ifelse(renda_pop > 3000, 0.9 * renda_pop, renda_pop)
+
+B <- 1000
+n <- 200
+medias_obs <- numeric(B)
+
+for (b in 1:B) {
+  amostra_idx <- sample(1:N, size = n, replace = FALSE)
+  medias_obs[b] <- mean(renda_obs[amostra_idx])
+}
+
+mean_medias_obs <- mean(medias_obs)
+sd_medias_obs   <- sd(medias_obs)
+
+mean_medias_obs
+sd_medias_obs
+```
+
+### Perguntas de interpretação
+
+-   Qual é agora o viés em relação ao valor verdadeiro (2.000)?
+-   A variabilidade das médias mudou muito?
+-   Este erro está mais relacionado a **erro amostral** ou
+    **não-amostral**? Justifique.
+
+```{r imprimir-01, eval=FALSE, include=FALSE}
+rmarkdown::render("01-introducao-qualidade.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```
+

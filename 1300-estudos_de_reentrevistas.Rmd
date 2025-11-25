@@ -1,1 +1,14 @@
 # Estudos das ReEntrevistas
+
+### 1. Estudo de Reentrevistas
+Consiste na repetição da aplicação de uma parte do questionário em domicílios selecionados (subamostra).
+
+**Objetivos Específicos:**
+*   **Estimar o erro de medição**.
+*   Calcular **indicadores de qualidade** (Taxas de Consistência).
+*   **Monitorar a qualidade** do processo de coleta das agências ao longo do tempo.
+*   Identificar agências com desempenho abaixo do esperado ou com baixa compreensão dos princípios da pesquisa.
+*   **Identificar fraudes**.
+
+*Protocolo:* As reentrevistas são conduzidas por entrevistadores "padrão ouro" (altamente qualificados), e as respostas obtidas são usadas como referência para comparação com a entrevista original.
+

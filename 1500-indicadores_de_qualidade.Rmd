@@ -1,1 +1,26 @@
 # Indicadores de Qualidade
+
+
+## Taxas de Consistência (Estudo de Reentrevistas)
+As reentrevistas permitem calcular indicadores de qualidade, como a Taxa de Consistência, que compara as respostas nas duas ocasiões.
+
+### Definição
+A **Taxa de Consistência no Componente** é o número de domicílios em que um componente foi classificado como **Consistente** (respostas iguais na entrevista original e reentrevista), dividido pelo total de domicílios da subamostra.
+
+### Componentes Avaliados no Estudo Piloto
+O questionário de reentrevista é composto por um grupo restrito de quesitos importantes, agrupados em cinco componentes principais:
+
+1.  **Componente 1:** Número de pessoas no domicílio (Quesito 1 da Parte 2).
+2.  **Componente 2:** Data de nascimento do informante (Quesito 8 da Parte 2).
+3.  **Componente 3:** Cor ou raça do informante (Quesito 10 da Parte 2).
+4.  **Componente 4:** Educação do informante (Parte 3).
+5.  **Componente 5:** Trabalho do informante (Quesitos 1 a 5 da Parte 4).
+
+### Uso da Taxa de Consistência
+*   Permite **quantificar e comparar o desempenho dos entrevistadores** como unidades de análise, servindo como um bom indicador de qualidade.
+*   O monitoramento desses indicadores individuais permite a comparabilidade entre agências e, ao longo do tempo, ajuda a distinguir entrevistadores com melhor desempenho daqueles com desempenho abaixo do esperado.
+
+*Exemplo de Resultados Reais do Estudo Piloto (Taxa Geral):*
+*   Componente 1 (Número de moradores): 96,2%
+*   Componente 5 (Trabalho): 81,1%
+

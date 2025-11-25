@@ -1,1 +1,185 @@
 ## Exercícios - Capacitação Contínua
+
+### PNAD
+
+Este capítulo usa um conjunto **fictício** de 300 entrevistadores para discutir
+capacitação, tempo de IBGE e tempo de experiência na PNAD Contínua.
+
+```{r setup-capacitacao-pnad, message=FALSE, warning=FALSE}
+set.seed(321)
+library(dplyr)
+
+n <- 300
+
+entrevistadores <- tibble(
+  id              = 1:n,
+  tempo_ibge      = sample(c("<=1 ano", "1-3 anos", "3-5 anos", ">5 anos"),
+                           size = n, replace = TRUE,
+                           prob = c(0.20, 0.50, 0.15, 0.15)),
+  tempo_pnad      = sample(c("<=6 meses", "6m-3 anos", "3-5 anos", ">5 anos"),
+                           size = n, replace = TRUE,
+                           prob = c(0.13, 0.65, 0.12, 0.10)),
+  leu_manual      = rbinom(n, 1, 0.9),   # 1 = leu integralmente, 0 = não
+  treinamento_comp= rbinom(n, 1, 0.8),   # recebeu treinamento completo
+  considera_satisf= rbinom(n, 1, 0.9),   # considera treinamento satisfatório
+  assistiu_exp    = rbinom(n, 1, 0.6),
+  acompanhado_1   = rbinom(n, 1, 0.6)
+) |>
+  mutate(
+    capac_ideal = if_else(
+      leu_manual == 1 &
+      treinamento_comp == 1 &
+      considera_satisf == 1 &
+      assistiu_exp == 1 &
+      acompanhado_1 == 1,
+      1L, 0L
+    )
+  )
+
+dplyr::glimpse(entrevistadores)
+```
+
+#### Exercício 3 – Proporção de “capacitação ideal”
+
+1. Calcule a proporção de entrevistadores com `capac_ideal == 1`.
+2. Calcule um intervalo de confiança (95%) para essa proporção.
+3. Interprete o resultado: o que isso diz sobre o “cenário de capacitação”?
+
+```{r exercicio3-capac-ideal}
+prop_capac_ideal <- mean(entrevistadores$capac_ideal)
+prop_capac_ideal
+
+# IC aproximado usando normal
+n <- nrow(entrevistadores)
+se <- sqrt(prop_capac_ideal * (1 - prop_capac_ideal) / n)
+ic_inf <- prop_capac_ideal - 1.96 * se
+ic_sup <- prop_capac_ideal + 1.96 * se
+c(ic_inf, ic_sup)
+```
+
+#### Exercício 4 – Associação entre tempo de IBGE e capacitação ideal
+
+1. Produza uma tabela de contingência entre `tempo_ibge` e `capac_ideal`.
+2. Calcule a proporção de capacitação ideal em cada categoria de `tempo_ibge`.
+3. Faça um gráfico de barras dessas proporções.
+4. Discuta: entrevistadores mais antigos parecem mais bem capacitados?
+
+```{r exercicio4-tab-grafico, message=FALSE, warning=FALSE}
+tab <- entrevistadores |>
+  group_by(tempo_ibge) |>
+  summarise(
+    n = n(),
+    prop_capac_ideal = mean(capac_ideal)
+  )
+
+tab
+
+barplot(tab$prop_capac_ideal,
+        names.arg = tab$tempo_ibge,
+        las = 2,
+        main = "Proporção de capacitação ideal por tempo de IBGE",
+        ylab = "Proporção",
+        ylim = c(0, 1))
+```
+
+##### Questões qualitativas
+
+- Suponha que a proporção de capacitação ideal seja inferior a 50%.
+  - Que ações de gestão da qualidade você sugeriria?
+- Como essa análise poderia ser usada pela coordenação estadual para planejar
+  **treinamentos de reciclagem**?
+
+
+### CNEFE
+
+Agora vamos trabalhar com um conjunto **fictício** de 200 atualizadores do CNEFE,
+incluindo informações sobre uso de ferramentas (como prismA e Google Earth).
+
+```{r setup-capacitacao-cnefe, message=FALSE, warning=FALSE}
+set.seed(456)
+library(dplyr)
+
+m <- 200
+
+atualizadores <- tibble(
+  id              = 1:m,
+  tempo_ibge      = sample(c("<=1 ano", "1-3 anos", "3-5 anos", ">5 anos"),
+                           size = m, replace = TRUE,
+                           prob = c(0.15, 0.50, 0.10, 0.25)),
+  tempo_cnefe     = sample(c("<=6 meses", "6m-3 anos", "3-5 anos", ">5 anos"),
+                           size = m, replace = TRUE,
+                           prob = c(0.11, 0.69, 0.13, 0.07)),
+  leu_manual      = rbinom(m, 1, 0.9),
+  treinamento     = rbinom(m, 1, 0.8),
+  considera_satisf= rbinom(m, 1, 0.92),
+  assistiu_exp    = rbinom(m, 1, 0.5),
+  acompanhado_1   = rbinom(m, 1, 0.5),
+  usa_prisma      = rbinom(m, 1, 0.4),
+  usa_google_earth= rbinom(m, 1, 0.7)
+) |>
+  mutate(
+    capac_ideal = if_else(
+      leu_manual == 1 &
+      treinamento == 1 &
+      considera_satisf == 1 &
+      assistiu_exp == 1 &
+      acompanhado_1 == 1,
+      1L, 0L
+    )
+  )
+
+dplyr::glimpse(atualizadores)
+```
+
+#### Exercício 5 – Comparando PNAD x CNEFE
+
+1. Calcule a proporção de `capac_ideal` entre entrevistadores (PNAD) e
+   atualizadores (CNEFE).
+2. Monte uma pequena tabela comparativa com essas duas proporções.
+3. Interprete: em qual operação a “capacitação ideal” está mais crítica?
+
+```{r exercicio5-compara-pnad-cnefe}
+prop_pnad  <- mean(entrevistadores$capac_ideal)
+prop_cnefe <- mean(atualizadores$capac_ideal)
+
+tibble(
+  pesquisa = c("PNAD Contínua", "CNEFE"),
+  prop_capac_ideal = c(prop_pnad, prop_cnefe)
+)
+```
+
+#### Exercício 6 – Uso de ferramentas e demanda por treinamento
+
+Suponha que a coordenação queira priorizar um treinamento de **prismA**.
+
+1. Calcule a proporção de atualizadores que utilizam `usa_prisma == 1`.
+2. Suponha que 70% dos que **não usam** prismA declararam interesse em um treinamento
+   (variável fictícia `interesse_prisma`, simulada abaixo).
+3. Calcule a proporção de interesse entre usuários e não usuários.
+
+```{r exercicio6-prisma}
+set.seed(789)
+
+atualizadores <- atualizadores |>
+  mutate(
+    interesse_prisma = if_else(
+      usa_prisma == 1,
+      rbinom(n(), 1, 0.3),   # quem já usa, menos interesse em treinamento
+      rbinom(n(), 1, 0.7)    # quem não usa, mais interesse
+    )
+  )
+
+prop_usa <- mean(atualizadores$usa_prisma)
+prop_usa
+
+# Proporção de interesse por grupo
+atualizadores |>
+  group_by(usa_prisma) |>
+  summarise(prop_interesse = mean(interesse_prisma))
+```
+
+##### Questões qualitativas
+
+- Como essa informação ajudaria a priorizar **cursos e tutoriais**?
+- Há evidência de que investir em treinamento de prismA pode ter bom retorno
+  em termos de demanda?

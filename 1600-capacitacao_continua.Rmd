@@ -1,1 +1,24 @@
 # Capacitação Contínua
+
+
+## Gerenciando o Risco do Erro de Medição
+
+**Diagnóstico da Capacitação:**
+O estudo diagnóstico revelou que a falta de reciclagem regular é um fator de risco para a qualidade:
+
+*   Para entrevistadores da PNAD Contínua: **58,3%** dos que receberam treinamento completo estavam há **mais de um ano sem reciclagem**.
+*   Para atualizadores do CNEFE: **45,3%** estavam há **mais de um ano sem reciclagem**.
+
+**Demanda por Treinamento (PNAD Contínua):**
+*   **Trabalho:** 68,1% (Maior demanda)
+*   **Outras formas de trabalho:** 55,1%
+*   **Educação:** 54,5%
+
+**Ações Sugeridas para a Gestão Contínua:**
+*   Manter e criar documentação atualizada e padronizada sobre capacitação.
+*   Incluir na grade do treinamento completo da PNAD Contínua temas importantes como a **identificação de domicílios e a abordagem ao informante**.
+*   Atuar junto às agências selecionadas para fazer um **mapeamento completo da qualidade** da coleta e implementar ações de melhoria.
+
+**Metáfora:**
+Gerenciar a qualidade nas pesquisas é como **pilotar um avião**. O erro amostral é o vento esperado que afeta o voo, controlado pelos cálculos de rota (plano amostral). Já o erro não-amostral é o **erro humano ou falha mecânica** (como um treinamento deficiente ou um instrumento com defeito) que, se não for monitorado e corrigido ativamente (reentrevistas e observação), pode levar o avião para longe do destino verdadeiro (o valor real dos dados).
+

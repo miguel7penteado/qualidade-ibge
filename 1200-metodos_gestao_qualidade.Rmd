@@ -1,1 +1,5 @@
 # Métodos da Gestão de Qualidade
+
+## Supervisão Contínua da Coleta
+O Programa de Gestão da Qualidade da Coleta adota dois métodos de atuação focados em monitorar e aprimorar o trabalho dos coletores de dados.
+

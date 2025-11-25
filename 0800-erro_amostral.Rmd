@@ -1,1 +1,5 @@
 # Erro Amostral
+
+### 1. Erro Amostral
+*   É conhecido e controlável.
+*   Diminui com o aumento do tamanho da amostra (*n*).

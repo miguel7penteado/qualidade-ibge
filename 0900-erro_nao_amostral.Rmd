@@ -1,1 +1,7 @@
 # Erro Não-Amostral
+
+### 2. Erro Não-Amostral
+*   É **imprevisível** e difícil de controlar e medir.
+*   Surge devido a **condições adversas no processo de obtenção da informação**.
+*   Aumenta com o aumento do tamanho da amostra (*n*).
+

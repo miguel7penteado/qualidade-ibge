@@ -1,1 +1,52 @@
 # Erro Total da Pesquisa
+
+## Decomposição do Erro e Foco do Trabalho
+O Valor Medido (Estimativa) é composto pelo Valor Verdadeiro mais o Erro Total da Pesquisa. 
+
+$$
+
+
+\text{ESTIMATIVA}\quad \Rightarrow \quad Est \\
+\text{ } \\
+\text{VALOR TOTAL}\quad \Rightarrow \quad vV \\
+\text{ } \\
+\text{ERRO TOTAL}\quad \Rightarrow \quad errT \\
+\text{ } \\
+
+\qquad Est =  ( vV ) + ( errT )
+
+
+$$
+
+
+O erro total é sub-dividido em duas categorias:
+
+onde o erro total é decomposto em:
+
+-   **Erro amostral** – decorrente de observar apenas uma amostra da
+    população;
+-   **Erro não-amostral** – associado à especificação, coleta, medição,
+    processamento etc.
+
+### 1. Erro Amostral
+
+É a parte do erro decorrente de observar apenas uma amostra da população;
+
+*   É conhecido e controlável.
+*   Diminui com o aumento do tamanho da amostra (*n*).
+
+### 2. Erro Não-Amostral
+É a parte do erro associado à especificação, coleta, medição, processamento etc.
+    
+*   É **imprevisível** e difícil de controlar e medir.
+*   Surge devido a **condições adversas no processo de obtenção da informação**.
+*   Aumenta com o aumento do tamanho da amostra (*n*).
+
+### Fontes do Erro Não-Amostral (Biemer & Lyberg, 2003)
+1.  **Erro de especificação:** Conceito implícito na pergunta diferente do que deveria ser medido.
+2.  **Erro de cobertura:** Falha em cobrir a população-alvo.
+3.  **Erro de não-resposta:** Falha em obter a resposta para um ou mais quesitos.
+4.  **Erro de medição:** Falha em captar o valor verdadeiro da medida.
+5.  **Erro de processamento:** Erro na etapa final da coleta (classificação, codificação, crítica e imputação).
+6.  **Erro de estimação:** Falha na aplicação de métodos estatísticos de estimação.
+

@@ -3,13 +3,9 @@ book_filename: "qualidade-pnad-cnefe"
 delete_merged_file: true
 rmd_files: [
     "index.Rmd",
-    "01-introducao-qualidade.Rmd",
     "0100-bem_vindo.Rmd",
-    "02-capacitacao-pnad.Rmd",
     "0200-prefacio.Rmd",
-    "03-capacitacao-cnefe.Rmd",
     "0300-autores_contribuintes.Rmd",
-    "04-reentrevistas-indicadores.Rmd",
     "0400-introducao.Rmd",
     "0500-principios_de_qualidade.Rmd",
     "0501-exercicios-principios_de_qualidade.Rmd",
