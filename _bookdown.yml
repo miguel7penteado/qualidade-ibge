@@ -1,0 +1,47 @@
+output_dir: "docs"
+book_filename: "qualidade-pnad-cnefe"
+delete_merged_file: true
+rmd_files: [
+    "index.Rmd",
+    "01-introducao-qualidade.Rmd",
+    "0100-bem_vindo.Rmd",
+    "02-capacitacao-pnad.Rmd",
+    "0200-prefacio.Rmd",
+    "03-capacitacao-cnefe.Rmd",
+    "0300-autores_contribuintes.Rmd",
+    "04-reentrevistas-indicadores.Rmd",
+    "0400-introducao.Rmd",
+    "0500-principios_de_qualidade.Rmd",
+    "0501-exercicios-principios_de_qualidade.Rmd",
+    "0600-dimensoes_qualidade_ibge.Rmd",
+    "0601-exercicios-dimensoes_qualidade_ibge.Rmd",
+    "0700-erro_total_da_pesquisa.Rmd",
+    "0701-exercicios-erro_total_da_pesquisa.Rmd",
+    "0800-erro_amostral.Rmd",
+    "0801-exercicios-erro_amostral.Rmd",
+    "0900-erro_nao_amostral.Rmd",
+    "0901-exercicios-erro_nao_amostral.Rmd",
+    "1000-fontes_erros_nao_amostral.Rmd",
+    "1001-exercicios-fontes_erros_nao_amostral.Rmd",
+    "1100-erro_de_medicao.Rmd",
+    "1101-exercicios-erro_de_medicao.Rmd",
+    "1200-metodos_gestao_qualidade.Rmd",
+    "1201-exercicios-metodos_gestao_qualidade.Rmd",
+    "1300-estudos_de_reentrevistas.Rmd",
+    "1301-exercicios-estudos_de_reentrevistas.Rmd",
+    "1400-observacao_reentrevistas.Rmd",
+    "1401-exercicios-observacao_reentrevistas.Rmd",
+    "1500-indicadores_de_qualidade.Rmd",
+    "1501-exercicios-indicadores_de_qualidade.Rmd",
+    "1600-capacitacao_continua.Rmd",
+    "1601-exercicios-capacitacao_continua.Rmd"
+]
+    
+#language:
+#  ui: pt
+#  label: pt
+
+language:
+  ui:
+    chapter_name: "Capítulo "
+

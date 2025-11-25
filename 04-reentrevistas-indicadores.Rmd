@@ -1,0 +1,125 @@
+# Reentrevistas e taxas de consistência
+
+Neste capítulo vamos simular um estudo de reentrevistas com 120 domicílios e
+5 componentes, calculando taxas de consistência.
+
+```{r setup-reentrevistas, message=FALSE, warning=FALSE}
+set.seed(999)
+library(dplyr)
+
+k <- 120
+
+reentrevistas <- tibble(
+  dom_id = 1:k,
+  cons_comp1 = rbinom(k, 1, 0.95), # número de moradores
+  cons_comp2 = rbinom(k, 1, 0.90), # data de nascimento
+  cons_comp3 = rbinom(k, 1, 0.96), # cor/raça
+  cons_comp4 = rbinom(k, 1, 0.70), # educação
+  cons_comp5 = rbinom(k, 1, 0.80)  # trabalho
+) |>
+  mutate(
+    taxa_dom = (cons_comp1 + cons_comp2 + cons_comp3 +
+                cons_comp4 + cons_comp5) / 5
+  )
+
+dplyr::glimpse(reentrevistas)
+```
+
+## Exercício 7 – Taxas de consistência por componente
+
+1. Calcule, para cada componente, a taxa de consistência (proporção de 1).
+2. Transforme essas taxas em percentuais.
+3. Produza um gráfico de barras com as cinco taxas.
+
+```{r exercicio7-taxas-componentes}
+taxas_comp <- reentrevistas |>
+  summarise(
+    comp1 = mean(cons_comp1),
+    comp2 = mean(cons_comp2),
+    comp3 = mean(cons_comp3),
+    comp4 = mean(cons_comp4),
+    comp5 = mean(cons_comp5)
+  ) |>
+  tidyr::pivot_longer(everything(),
+                      names_to = "componente",
+                      values_to = "taxa")
+
+taxas_comp
+
+barplot(taxas_comp$taxa * 100,
+        names.arg = taxas_comp$componente,
+        main = "Taxas de consistência (%) por componente",
+        ylab = "Taxa (%)",
+        ylim = c(0, 100))
+```
+
+### Perguntas de interpretação
+
+- Qual componente apresenta menor qualidade de medição?
+- Como isso dialoga com a percepção de que **Educação** e **Trabalho**
+  são partes mais complexas do questionário?
+
+## Exercício 8 – Taxa de consistência global
+
+1. Calcule a taxa de consistência global como:
+
+\[
+\text{Taxa global} = \frac{\text{soma de todas as componentes consistentes}}
+                           {5 \times \text{número de domicílios}}
+\]
+
+2. Estime um intervalo de confiança de 95% para essa taxa global, interpretando-a
+   como uma proporção.
+
+```{r exercicio8-taxa-global}
+total_consistentes <- sum(
+  reentrevistas$cons_comp1,
+  reentrevistas$cons_comp2,
+  reentrevistas$cons_comp3,
+  reentrevistas$cons_comp4,
+  reentrevistas$cons_comp5
+)
+
+n_dom <- nrow(reentrevistas)
+taxa_global <- total_consistentes / (5 * n_dom)
+taxa_global
+
+se_global <- sqrt(taxa_global * (1 - taxa_global) / (5 * n_dom))
+ic_inf <- taxa_global - 1.96 * se_global
+ic_sup <- taxa_global + 1.96 * se_global
+c(ic_inf, ic_sup)
+```
+
+## Exercício 9 – Comparando agências
+
+Suponha agora que tenhamos resultados de duas agências, A e B, com 60 domicílios
+cada. Vamos simular rapidamente:
+
+```{r exercicio9-agencias}
+set.seed(2025)
+
+sim_agencias <- function(ag, k, p_edu) {
+  tibble(
+    agencia = ag,
+    dom_id  = 1:k,
+    cons_comp4 = rbinom(k, 1, p_edu)
+  )
+}
+
+agA <- sim_agencias("A", 60, 0.80)
+agB <- sim_agencias("B", 60, 0.60)
+
+re_edu <- dplyr::bind_rows(agA, agB)
+
+re_edu |>
+  group_by(agencia) |>
+  summarise(
+    taxa_edu = mean(cons_comp4)
+  )
+```
+
+### Perguntas
+
+- Qual agência tem pior desempenho na componente **Educação**?
+- Se sua meta fosse uma taxa mínima de 75%, que ações de supervisão você
+  sugeriria para a agência abaixo da meta?

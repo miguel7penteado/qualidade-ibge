@@ -1,0 +1,88 @@
+# Capacitação dos entrevistadores da PNAD Contínua
+
+Este capítulo usa um conjunto **fictício** de 300 entrevistadores para discutir
+capacitação, tempo de IBGE e tempo de experiência na PNAD Contínua.
+
+```{r setup-capacitacao-pnad, message=FALSE, warning=FALSE}
+set.seed(321)
+library(dplyr)
+
+n <- 300
+
+entrevistadores <- tibble(
+  id              = 1:n,
+  tempo_ibge      = sample(c("<=1 ano", "1-3 anos", "3-5 anos", ">5 anos"),
+                           size = n, replace = TRUE,
+                           prob = c(0.20, 0.50, 0.15, 0.15)),
+  tempo_pnad      = sample(c("<=6 meses", "6m-3 anos", "3-5 anos", ">5 anos"),
+                           size = n, replace = TRUE,
+                           prob = c(0.13, 0.65, 0.12, 0.10)),
+  leu_manual      = rbinom(n, 1, 0.9),   # 1 = leu integralmente, 0 = não
+  treinamento_comp= rbinom(n, 1, 0.8),   # recebeu treinamento completo
+  considera_satisf= rbinom(n, 1, 0.9),   # considera treinamento satisfatório
+  assistiu_exp    = rbinom(n, 1, 0.6),
+  acompanhado_1   = rbinom(n, 1, 0.6)
+) |>
+  mutate(
+    capac_ideal = if_else(
+      leu_manual == 1 &
+      treinamento_comp == 1 &
+      considera_satisf == 1 &
+      assistiu_exp == 1 &
+      acompanhado_1 == 1,
+      1L, 0L
+    )
+  )
+
+dplyr::glimpse(entrevistadores)
+```
+
+## Exercício 3 – Proporção de “capacitação ideal”
+
+1. Calcule a proporção de entrevistadores com `capac_ideal == 1`.
+2. Calcule um intervalo de confiança (95%) para essa proporção.
+3. Interprete o resultado: o que isso diz sobre o “cenário de capacitação”?
+
+```{r exercicio3-capac-ideal}
+prop_capac_ideal <- mean(entrevistadores$capac_ideal)
+prop_capac_ideal
+
+# IC aproximado usando normal
+n <- nrow(entrevistadores)
+se <- sqrt(prop_capac_ideal * (1 - prop_capac_ideal) / n)
+ic_inf <- prop_capac_ideal - 1.96 * se
+ic_sup <- prop_capac_ideal + 1.96 * se
+c(ic_inf, ic_sup)
+```
+
+## Exercício 4 – Associação entre tempo de IBGE e capacitação ideal
+
+1. Produza uma tabela de contingência entre `tempo_ibge` e `capac_ideal`.
+2. Calcule a proporção de capacitação ideal em cada categoria de `tempo_ibge`.
+3. Faça um gráfico de barras dessas proporções.
+4. Discuta: entrevistadores mais antigos parecem mais bem capacitados?
+
+```{r exercicio4-tab-grafico, message=FALSE, warning=FALSE}
+tab <- entrevistadores |>
+  group_by(tempo_ibge) |>
+  summarise(
+    n = n(),
+    prop_capac_ideal = mean(capac_ideal)
+  )
+
+tab
+
+barplot(tab$prop_capac_ideal,
+        names.arg = tab$tempo_ibge,
+        las = 2,
+        main = "Proporção de capacitação ideal por tempo de IBGE",
+        ylab = "Proporção",
+        ylim = c(0, 1))
+```
+
+### Questões qualitativas
+
+- Suponha que a proporção de capacitação ideal seja inferior a 50%.
+  - Que ações de gestão da qualidade você sugeriria?
+- Como essa análise poderia ser usada pela coordenação estadual para planejar
+  **treinamentos de reciclagem**?

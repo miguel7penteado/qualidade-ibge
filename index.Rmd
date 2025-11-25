@@ -1,0 +1,40 @@
+---
+title: "Qualidade da Coleta: PNAD Contínua e CNEFE"
+subtitle: "Anotações de Materiais e Métodos"
+author: "Prof. Miguél Suares"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+site: bookdown::bookdown_site
+documentclass: book
+output: 
+
+---
+
+# Bem-vindos
+
+![](imagens/00-ilustracao-capa.jpg)
+
+Bem-vindos ao **Livro de Exercícios e Métodos em Gestão da Qualidade da Coleta – PNAD Contínua e CNEFE**.
+
+\
+Este material tem como objetivo apoiar ações de **formação, capacitação e supervisão técnica** relacionadas às operações de coleta domiciliar do IBGE, com foco especial em **Minas Gerais** e **São Paulo**, inspirado no conteúdo apresentado no relatório *Gestão da Qualidade da Coleta – PNAD Contínua e CNEFE – MG*.
+
+Este livro apresenta exercícios práticos construídos sobre **dados simulados em R**, permitindo a aplicação de conceitos essenciais à **qualidade da aquisição de dados** em pesquisas domiciliares, incluindo:
+
+-   estruturação e avaliação de **indicadores operacionais**;
+-   diagnóstico sobre a **capacitação dos entrevistadores e atualizadores de campo**;
+-   simulação de **reentrevistas e cálculo de taxas de consistência**;
+-   análise integrada das operações **PNAD Contínua e CNEFE** no contexto de gestão da qualidade.
+
+Todo o conteúdo foi baseado em experiências reais de gestão e supervisão executadas pelo IBGE, reconhecendo o trabalho de servidores, supervisores, coordenadores e equipes de coleta que garantem a excelência operacional das pesquisas socioeconômicas e cadastrais.
+
+A versão reprodutível deste livro pode ser compilada no RStudio utilizando o pacote **bookdown**, facilitando atualização contínua, colaboração e expansão metodológica.
+
+Este material encontra-se licenciado sob **Creative Commons Atribuição-SemDerivações 4.0 Internacional (CC BY-ND 4.0)**.
+
+------------------------------------------------------------------------
+
+## Como citar
+
+> IBGE – Superintendências Estaduais de Minas Gerais e São Paulo. *Gestão da Qualidade da Coleta – PNAD Contínua e CNEFE: Livro de Exercícios e Métodos*. 2025.
+
+------------------------------------------------------------------------
