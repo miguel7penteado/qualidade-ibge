@@ -3,8 +3,12 @@
 É um sistema de controle de qualidade onde os entrevistadores da PNAD Contínua são **acompanhados por um observador experiente** que avalia seu trabalho por meio de um formulário de observação.
 
 **Aspectos Avaliados (Exemplos do Formulário de Observação):**
+
 1.  Identificação correta do domicílio (domínio dos conceitos de endereçamento).
+
 2.  Maneira correta de fazer a pergunta, sem induzir o informante.
+
 3.  Postura profissional adequada (uso de crachá, cordialidade, sigilo).
+
 4.  Capacidade de esclarecer dúvidas conceituais e situacionais.
 

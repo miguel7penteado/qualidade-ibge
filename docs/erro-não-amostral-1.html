@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 Bem Vindo | Qualidade da Coleta: PNAD Contínua e CNEFE</title>
-  <meta name="description" content="Capítulo 2 Bem Vindo | Qualidade da Coleta: PNAD Contínua e CNEFE" />
+  <title>Capítulo 10 Erro Não-Amostral | Qualidade da Coleta: PNAD Contínua e CNEFE</title>
+  <meta name="description" content="Capítulo 10 Erro Não-Amostral | Qualidade da Coleta: PNAD Contínua e CNEFE" />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 2 Bem Vindo | Qualidade da Coleta: PNAD Contínua e CNEFE" />
+  <meta property="og:title" content="Capítulo 10 Erro Não-Amostral | Qualidade da Coleta: PNAD Contínua e CNEFE" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 Bem Vindo | Qualidade da Coleta: PNAD Contínua e CNEFE" />
+  <meta name="twitter:title" content="Capítulo 10 Erro Não-Amostral | Qualidade da Coleta: PNAD Contínua e CNEFE" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="prefácio.html"/>
+<link rel="prev" href="erro-amostral-1.html"/>
+<link rel="next" href="fontes-de-erros-não-amostrais.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -254,17 +254,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bem-vindo" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Bem Vindo<a href="bem-vindo.html#bem-vindo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="erro-não-amostral-1" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Capítulo 10</span> Erro Não-Amostral<a href="erro-não-amostral-1.html#erro-n%C3%A3o-amostral-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="erro-não-amostral-2" class="section level3 hasAnchor" number="10.0.1">
+<h3><span class="header-section-number">10.0.1</span> 2. Erro Não-Amostral<a href="erro-não-amostral-1.html#erro-n%C3%A3o-amostral-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>É <strong>imprevisível</strong> e difícil de controlar e medir.</li>
+<li>Surge devido a <strong>condições adversas no processo de obtenção da informação</strong>.</li>
+<li>Aumenta com o aumento do tamanho da amostra (<em>n</em>).</li>
+</ul>
 
+</div>
+<div id="exercícios---erro-não-amostral" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Exercícios - Erro Não-Amostral<a href="erro-não-amostral-1.html#exerc%C3%ADcios---erro-n%C3%A3o-amostral" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="exercício-2-introduzindo-um-erro-de-medição" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Exercício 2 – Introduzindo um erro de medição<a href="erro-não-amostral-1.html#exerc%C3%ADcio-2-introduzindo-um-erro-de-medi%C3%A7%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Agora vamos introduzir um <strong>erro de medição</strong> simples: suponha que, em
+média, o entrevistador subestime em 10% o rendimento dos entrevistados
+com renda acima de R$ 3.000.</p>
+<ol style="list-style-type: decimal">
+<li><p>A partir da mesma população fictícia, crie uma variável
+<code>renda_observada</code> com a seguinte regra:</p>
+<ul>
+<li>se <code>renda_pop &gt; 3000</code>, então
+<code>renda_observada = 0.9 * renda_pop</code>;</li>
+<li>caso contrário, <code>renda_observada = renda_pop</code>.</li>
+</ul></li>
+<li><p>Repita o mesmo processo de amostragem do Exercício 1, mas agora
+calcule as médias usando <code>renda_observada</code>.</p></li>
+<li><p>Compare o novo viés com o viés do Exercício 1.</p></li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="erro-não-amostral-1.html#cb8-1" tabindex="-1"></a><span class="co"># 1. Criar renda observada com erro de medição</span></span>
+<span id="cb8-2"><a href="erro-não-amostral-1.html#cb8-2" tabindex="-1"></a>renda_obs <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(renda_pop <span class="sc">&gt;</span> <span class="dv">3000</span>, <span class="fl">0.9</span> <span class="sc">*</span> renda_pop, renda_pop)</span>
+<span id="cb8-3"><a href="erro-não-amostral-1.html#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="erro-não-amostral-1.html#cb8-4" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb8-5"><a href="erro-não-amostral-1.html#cb8-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb8-6"><a href="erro-não-amostral-1.html#cb8-6" tabindex="-1"></a>medias_obs <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb8-7"><a href="erro-não-amostral-1.html#cb8-7" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="erro-não-amostral-1.html#cb8-8" tabindex="-1"></a><span class="cf">for</span> (b <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
+<span id="cb8-9"><a href="erro-não-amostral-1.html#cb8-9" tabindex="-1"></a>  amostra_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-10"><a href="erro-não-amostral-1.html#cb8-10" tabindex="-1"></a>  medias_obs[b] <span class="ot">&lt;-</span> <span class="fu">mean</span>(renda_obs[amostra_idx])</span>
+<span id="cb8-11"><a href="erro-não-amostral-1.html#cb8-11" tabindex="-1"></a>}</span>
+<span id="cb8-12"><a href="erro-não-amostral-1.html#cb8-12" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="erro-não-amostral-1.html#cb8-13" tabindex="-1"></a>mean_medias_obs <span class="ot">&lt;-</span> <span class="fu">mean</span>(medias_obs)</span>
+<span id="cb8-14"><a href="erro-não-amostral-1.html#cb8-14" tabindex="-1"></a>sd_medias_obs   <span class="ot">&lt;-</span> <span class="fu">sd</span>(medias_obs)</span>
+<span id="cb8-15"><a href="erro-não-amostral-1.html#cb8-15" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="erro-não-amostral-1.html#cb8-16" tabindex="-1"></a>mean_medias_obs</span></code></pre></div>
+<pre><code>## [1] 1965.17</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="erro-não-amostral-1.html#cb10-1" tabindex="-1"></a>sd_medias_obs</span></code></pre></div>
+<pre><code>## [1] 53.13159</code></pre>
+<div id="perguntas-de-interpretação-1" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Perguntas de interpretação<a href="erro-não-amostral-1.html#perguntas-de-interpreta%C3%A7%C3%A3o-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Qual é agora o viés em relação ao valor verdadeiro (2.000)?</li>
+<li>A variabilidade das médias mudou muito?</li>
+<li>Este erro está mais relacionado a <strong>erro amostral</strong> ou
+<strong>não-amostral</strong>? Justifique.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="prefácio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="erro-amostral-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fontes-de-erros-não-amostrais.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -295,7 +353,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/miguel7penteado/2025-2sem-GTI-BancoDeDados/edit/main/0100-bem_vindo.Rmd",
+    "link": "https://github.com/miguel7penteado/2025-2sem-GTI-BancoDeDados/edit/main/0900-erro_nao_amostral.Rmd",
     "text": "Edit"
   },
   "history": {

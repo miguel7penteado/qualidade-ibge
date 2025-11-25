@@ -2,19 +2,23 @@
 
 ### Exercício 1 – Simulando erro amostral
 
-Considere que o verdadeiro rendimento médio mensal da população de um
-município seja R\$ 2.000, com desvio-padrão de R\$ 800.
+Considere que o verdadeiro rendimento médio mensal da população de um município seja R\$ 2.000, com desvio-padrão de R\$ 800.
 
 1.  Simule em R uma população fictícia de 100.000 indivíduos.
-2.  A partir dessa população, extraia 1.000 amostras aleatórias simples
-    de tamanho 200.
+
+2.  A partir dessa população, extraia 1.000 amostras aleatórias simples de tamanho 200.
+
 3.  Para cada amostra, calcule a média amostral.
+
 4.  Faça um histograma das médias amostrais e estime:
-    -   o viés (diferença entre média das médias amostrais e o valor
-        verdadeiro 2.000);
+
+    -   o viés (diferença entre média das médias amostrais e o valor verdadeiro 2.000);
+
     -   o desvio-padrão das médias amostrais (erro padrão).
 
+
 ```{r exercicio1-erro-amostral, message=FALSE, warning=FALSE}
+
 set.seed(123)
 
 # 1. População fictícia
@@ -28,14 +32,17 @@ n <- 200
 medias <- numeric(B)
 
 for (b in 1:B) {
-  amostra <- sample(renda_pop, size = n, replace = FALSE)
+  
+  amostra   <- sample(renda_pop, size = n, replace = FALSE)
   medias[b] <- mean(amostra)
+  
 }
 
 # 3. Sumário
-mean_verdadeira <- mean(renda_pop)
-mean_medias <- mean(medias)
-sd_medias <- sd(medias)
+
+mean_verdadeira  <- mean(renda_pop)
+mean_medias      <- mean(medias)
+sd_medias        <- sd(medias)
 
 mean_verdadeira
 mean_medias
@@ -46,13 +53,15 @@ hist(medias,
      main = "Distribuição das médias amostrais (n = 200)",
      xlab = "Média amostral")
 abline(v = mean_verdadeira, lwd = 2, lty = 2)
+
 ```
 
 ### Perguntas de interpretação
 
 -   O viés observado é grande ou pequeno em relação a 2.000?
--   Como o desvio-padrão das médias se compara ao desvio-padrão da
-    população?
--   Se aumentarmos o tamanho da amostra para 800, o que esperamos que
-    aconteça com o desvio-padrão das médias amostrais?
+
+-   Como o desvio-padrão das médias se compara ao desvio-padrão da população?
+
+-   Se aumentarmos o tamanho da amostra para 800, o que esperamos que aconteça com o desvio-padrão das médias amostrais?
+
 
